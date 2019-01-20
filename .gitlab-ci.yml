@@ -1,0 +1,14 @@
+image: python:3.6
+
+stages:
+  - deploy
+
+update:
+  stage: deploy
+  script:
+    - python3 -m pip install awsebcli
+    - eb use short-urls-prod
+    - eb deploy short-urls-prod
+  only:
+    - master
+
